@@ -1,0 +1,60 @@
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        title: 'Flutter Application delivery app',
+        home: Scaffold(
+          backgroundColor: kcPrimaryColor,
+          body: Center(
+            child: Container(
+              padding: EdgeInsets.all(30),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => MyLogin()));
+                        // Navigator.push(context,
+                        //     MaterialPageRoute(builder: (context) => MyLogin()));
+                      },
+                      child: Text(
+                        'Skip',
+                        style: textStyle(15, 'Poppins',
+                            Color(0xffFFFFFF).withOpacity(.5), FontWeight.w400),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 100,
+                  ),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Fast Delivery',
+                      textAlign: TextAlign.left,
+                      style: textStyle(
+                          36, 'Popins', Colors.white, FontWeight.w600),
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Mutta roast gravy dish popular spicy Kerala',
+                      textAlign: TextAlign.left,
+                      style: textStyle(
+                          12, 'Popins', Colors.white, FontWeight.w400),
+                    ),
+                  ),
+                  Image.asset('assets/image.png'),
+                ],
+              ),
+            ),
+          ),
+        ));
+  }
+}
