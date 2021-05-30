@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_deliveryapp/customitems.dart';
 import 'package:flutter_deliveryapp/homepage.dart';
+import 'package:flutter_deliveryapp/orders.dart';
+import 'package:flutter_deliveryapp/settings.dart';
+import 'package:flutter_deliveryapp/wallet.dart';
 
 void main() {
   runApp(MyApp());
@@ -156,7 +159,7 @@ class LoginPage extends State<MyLogin> {
                 title: 'Login',
                 ontap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MyHomepage()));
+                      MaterialPageRoute(builder: (context) => Settings()));
                 },
                 height: 50,
                 width: 100,
@@ -201,7 +204,7 @@ class Signup extends StatefulWidget {
 
 class Sign extends State {
   gender _ans = gender.m;
-  var currentValue;
+  var currentValueplace;
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
@@ -374,10 +377,10 @@ class Sign extends State {
                           //   }
                           // });
                           setState(() {
-                            this.currentValue = newvalue;
+                            this.currentValueplace = newvalue;
                           });
                         },
-                        value: currentValue,
+                        value: currentValueplace,
                       ),
                     ),
                     SizedBox(

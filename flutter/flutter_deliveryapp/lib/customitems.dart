@@ -6,7 +6,7 @@ const Color kcPrimaryColor = Color(0xff8FA620);
 const Color kcSecondaryColor = Color(0xff424753);
 const Color kcGreyLightColor = Color(0x0ff929292);
 const Color kcMediumGreyColor = Color(0xff5B5A5D);
-const Color kcDarkBlueColor = Color(0xFF002649);
+const Color kcRedColor = Color(0xFFF15B4D);
 
 TextStyle textStyle(
     double fontSiz, String fontFam, Color fontColor, FontWeight fontWgt) {
@@ -25,21 +25,26 @@ class CustomTextField extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(40)),
+        borderRadius: BorderRadius.all(
+          Radius.circular(40),
+        ),
+        border: Border.all(color: Color(0xffCACFE2), width: 0),
       ),
       child: TextField(
         decoration: InputDecoration(
-            hintText: hint,
-            hintStyle: TextStyle(
+          hintText: hint,
+          hintStyle: TextStyle(
               color: kcGreyLightColor,
               fontSize: 12,
               fontStyle: FontStyle.normal,
-            ),
-            contentPadding: EdgeInsets.all(10),
-            border: InputBorder.none,
-            enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(40.0),
-                borderSide: BorderSide(color: Color(0xffCACFE2), width: 0))),
+              fontFamily: 'Poppins'),
+          contentPadding: EdgeInsets.all(10),
+          border: InputBorder.none,
+          // enabledBorder: OutlineInputBorder(
+          //   borderRadius: BorderRadius.circular(40.0),
+          //   borderSide: BorderSide(color: Color(0xffCACFE2), width: 0),
+          // ),
+        ),
       ),
     );
   }
@@ -63,10 +68,12 @@ class CustomButton extends StatelessWidget {
       child: Text(
         title,
         style: TextStyle(
-            fontSize: 17,
-            fontStyle: FontStyle.normal,
-            fontWeight: FontWeight.normal,
-            color: Colors.white),
+          fontSize: 17,
+          fontStyle: FontStyle.normal,
+          fontWeight: FontWeight.normal,
+          fontFamily: 'Poppins',
+          color: Colors.white,
+        ),
       ),
       onPressed: ontap,
       style: ElevatedButton.styleFrom(
