@@ -21,7 +21,10 @@ class MyWallet extends State {
               child: Row(
                 children: [
                   IconButton(
-                      icon: Icon(Icons.arrow_back_ios), onPressed: () {}),
+                      icon: Icon(Icons.arrow_back_ios),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      }),
                   Text(
                     'Wallet',
                     style: textStyle(
@@ -163,7 +166,11 @@ class Payment extends State {
           Container(
             child: Row(
               children: [
-                IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: () {}),
+                IconButton(
+                    icon: Icon(Icons.arrow_back_ios),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    }),
                 Text(
                   'Wallet',
                   style: textStyle(

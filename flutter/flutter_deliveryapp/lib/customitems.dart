@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_deliveryapp/homepage.dart';
+import 'package:flutter_deliveryapp/orders.dart';
+import 'package:flutter_deliveryapp/profile.dart';
+import 'package:flutter_deliveryapp/settings.dart';
+import 'package:flutter_deliveryapp/wallet.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:dotted_line/dotted_line.dart';
 
 const Color kcPrimaryColor = Color(0xff8FA620);
 const Color kcSecondaryColor = Color(0xff424753);
@@ -31,6 +36,42 @@ class CustomTextField extends StatelessWidget {
         border: Border.all(color: Color(0xffCACFE2), width: 0),
       ),
       child: TextField(
+        decoration: InputDecoration(
+          hintText: hint,
+          hintStyle: TextStyle(
+              color: kcGreyLightColor,
+              fontSize: 12,
+              fontStyle: FontStyle.normal,
+              fontFamily: 'Poppins'),
+          contentPadding: EdgeInsets.all(10),
+          border: InputBorder.none,
+          // enabledBorder: OutlineInputBorder(
+          //   borderRadius: BorderRadius.circular(40.0),
+          //   borderSide: BorderSide(color: Color(0xffCACFE2), width: 0),
+          // ),
+        ),
+      ),
+    );
+  }
+}
+
+class CustomTextFormField extends StatelessWidget {
+  final String hint;
+  final Function validate;
+
+  const CustomTextFormField({Key key, this.hint, this.validate})
+      : super(key: key);
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.all(
+          Radius.circular(40),
+        ),
+        border: Border.all(color: Color(0xffCACFE2), width: 0),
+      ),
+      child: TextFormField(
+        validator: validate,
         decoration: InputDecoration(
           hintText: hint,
           hintStyle: TextStyle(
@@ -97,7 +138,7 @@ class NavBar extends StatelessWidget {
   final PersistentTabController _controller =
       PersistentTabController(initialIndex: 0);
   List<Widget> _buildScreens() {
-    return [MyHomepage()];
+    return [MyHomepage(), Wallet(), Orders(), Profile(), Settings()];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
@@ -187,7 +228,28 @@ class NavBar extends StatelessWidget {
         duration: Duration(milliseconds: 200),
       ),
       navBarStyle:
-          NavBarStyle.style1, // Choose the nav bar style with this property.
+          NavBarStyle.style6, // Choose the nav bar style with this property.
+    );
+  }
+}
+
+// DottedLine dotedline(
+//   direction: Axis.horizontal,
+//   lineLength: double.infinity,
+//   lineThickness: 1.0,
+//   dashLength: 4.0,
+//   dashColor: Colors.black,
+//   dashRadius: 0.0,
+//   dashGapLength: 4.0,
+//   dashGapColor: Colors.transparent,
+//   dashGapRadius: 0.0,
+// )
+
+class NavBarContainer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      bottomNavigationBar: NavBar(),
     );
   }
 }

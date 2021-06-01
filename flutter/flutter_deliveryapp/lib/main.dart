@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_deliveryapp/customitems.dart';
 import 'package:flutter_deliveryapp/homepage.dart';
 import 'package:flutter_deliveryapp/orders.dart';
+import 'package:flutter_deliveryapp/profile.dart';
 import 'package:flutter_deliveryapp/settings.dart';
 import 'package:flutter_deliveryapp/wallet.dart';
 
@@ -64,7 +65,8 @@ class Onboard extends StatelessWidget {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      'Mutta roast gravy dish popular spicy Kerala',
+                      '',
+                      // 'Mutta roast gravy dish popular spicy Kerala',
                       textAlign: TextAlign.left,
                       style: textStyle(
                           12, 'Popins', Colors.white, FontWeight.w400),
@@ -86,6 +88,10 @@ class MyLogin extends StatefulWidget {
 
 class LoginPage extends State<MyLogin> {
   @override
+  String username = 'aaaa';
+  String password = '1111';
+  final logpass = GlobalKey();
+  final loguser = GlobalKey();
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
@@ -124,6 +130,7 @@ class LoginPage extends State<MyLogin> {
               ),
               CustomTextField(
                 hint: 'Username',
+                key: loguser,
               ),
               SizedBox(height: 20),
               Container(
@@ -136,6 +143,7 @@ class LoginPage extends State<MyLogin> {
               ),
               CustomTextField(
                 hint: 'Password',
+                key: logpass,
               ),
               Container(
                 alignment: Alignment.centerRight,
@@ -158,8 +166,14 @@ class LoginPage extends State<MyLogin> {
                 color: kcPrimaryColor,
                 title: 'Login',
                 ontap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Settings()));
+                  // if (loguser == username && logpass == password) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => NavBarContainer()));
+                  // } else {
+                  //   print('cant login');
+                  // }
                 },
                 height: 50,
                 width: 100,
@@ -218,9 +232,12 @@ class Sign extends State {
                 child: Row(
                   children: [
                     IconButton(
-                        icon: Icon(Icons.arrow_back_ios), onPressed: () {}),
+                        icon: Icon(Icons.arrow_back_ios),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        }),
                     Text(
-                      'Registration form',
+                      'Registration Form',
                       style: textStyle(
                           18, 'Poppins', kcSecondaryColor, FontWeight.w700),
                     )
@@ -230,170 +247,121 @@ class Sign extends State {
               SizedBox(
                 height: 30,
               ),
-              Container(
-                padding: EdgeInsets.only(
-                  left: 30,
-                  right: 30,
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      'Name:',
-                      style: textStyle(
-                          12, 'Poppins', Color(0xff000000), FontWeight.w600),
-                    ),
-                    CustomTextField(
-                      hint: 'Name',
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      'Mobile:',
-                      style: textStyle(
-                          12, 'Poppins', Color(0xff000000), FontWeight.w600),
-                    ),
-                    CustomTextField(
-                      hint: 'Mobile',
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      'E mail:',
-                      style: textStyle(
-                          12, 'Poppins', Color(0xff000000), FontWeight.w600),
-                    ),
-                    CustomTextField(
-                      hint: 'Email',
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      'Adress:',
-                      style: textStyle(
-                          12, 'Poppins', Color(0xff000000), FontWeight.w600),
-                    ),
-                    CustomTextField(
-                      hint: 'Adress',
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      'Gender:',
-                      style: textStyle(
-                          12, 'Poppins', Color(0xff000000), FontWeight.w600),
-                    ),
-                    Row(
-                      children: [
-                        Radio<gender>(
-                          activeColor: Colors.red,
-                          value: gender.m,
-                          groupValue: _ans,
-                          onChanged: (gender value) {
-                            setState(() {
-                              _ans = value;
-                            });
-                          },
-                        ),
-                        Text(
-                          'Male',
-                          style: textStyle(
-                              12, 'Poppins', kcGreyLightColor, FontWeight.w400),
-                        ),
-                        Radio<gender>(
-                          activeColor: Colors.red,
-                          value: gender.f,
-                          groupValue: _ans,
-                          onChanged: (gender value) {
-                            setState(() {
-                              _ans = value;
-                            });
-                          },
-                        ),
-                        Text(
-                          'female',
-                          style: textStyle(
-                              12, 'Poppins', kcGreyLightColor, FontWeight.w400),
-                        ),
-                        Radio<gender>(
-                          activeColor: Colors.red,
-                          value: gender.o,
-                          groupValue: _ans,
-                          onChanged: (gender value) {
-                            setState(() {
-                              _ans = value;
-                            });
-                          },
-                        ),
-                        Text(
-                          'Others',
-                          style: textStyle(
-                              12, 'Poppins', kcGreyLightColor, FontWeight.w400),
-                        ),
-                      ],
-                    ),
-                    Text(
-                      'Job location:',
-                      style: textStyle(
-                          12, 'Poppins', Color(0xff000000), FontWeight.w600),
-                    ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Color(0xffCACFE2), width: 0),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(40),
-                        ),
+              Form(
+                child: Container(
+                  padding: EdgeInsets.only(
+                    left: 30,
+                    right: 30,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(
+                        'Name:',
+                        style: textStyle(
+                            12, 'Poppins', Color(0xff000000), FontWeight.w600),
                       ),
-                      child: DropdownButton<String>(
-                        icon: Icon(Icons.arrow_drop_down),
-                        isExpanded: true,
-                        hint: Text(
-                          'Place',
-                          style: TextStyle(
-                            fontSize: 14,
+                      CustomTextFormField(
+                        hint: 'Name',
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'Mobile:',
+                        style: textStyle(
+                            12, 'Poppins', Color(0xff000000), FontWeight.w600),
+                      ),
+                      CustomTextFormField(
+                        hint: 'Mobile',
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'E mail:',
+                        style: textStyle(
+                            12, 'Poppins', Color(0xff000000), FontWeight.w600),
+                      ),
+                      CustomTextFormField(
+                        hint: 'Email',
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'Adress:',
+                        style: textStyle(
+                            12, 'Poppins', Color(0xff000000), FontWeight.w600),
+                      ),
+                      CustomTextFormField(
+                        hint: 'Adress',
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'Gender:',
+                        style: textStyle(
+                            12, 'Poppins', Color(0xff000000), FontWeight.w600),
+                      ),
+                      Row(
+                        children: [
+                          Radio<gender>(
+                            activeColor: Colors.red,
+                            value: gender.m,
+                            groupValue: _ans,
+                            onChanged: (gender value) {
+                              setState(() {
+                                _ans = value;
+                              });
+                            },
                           ),
-                        ),
-                        underline: SizedBox(),
-                        items: ['puthiyara', 'calicut city', 'pavangad']
-                            .map((String dropDownStringItem) {
-                          return DropdownMenuItem<String>(
-                            value: dropDownStringItem,
-                            child: Text(dropDownStringItem),
-                          );
-                        }).toList(),
-                        onChanged: (String newvalue) {
-                          // _dropdownList = [];
-                          // materialdoc.forEach((element) {
-                          //   if (element.sub.toLowerCase() ==
-                          //       newvalue.toLowerCase()) {
-                          //     _dropdownList.add(element);
-                          //   }
-                          // });
-                          setState(() {
-                            this.currentValueplace = newvalue;
-                          });
-                        },
-                        value: currentValueplace,
+                          Text(
+                            'Male',
+                            style: textStyle(12, 'Poppins', kcGreyLightColor,
+                                FontWeight.w400),
+                          ),
+                          Radio<gender>(
+                            activeColor: Colors.red,
+                            value: gender.f,
+                            groupValue: _ans,
+                            onChanged: (gender value) {
+                              setState(() {
+                                _ans = value;
+                              });
+                            },
+                          ),
+                          Text(
+                            'female',
+                            style: textStyle(12, 'Poppins', kcGreyLightColor,
+                                FontWeight.w400),
+                          ),
+                          Radio<gender>(
+                            activeColor: Colors.red,
+                            value: gender.o,
+                            groupValue: _ans,
+                            onChanged: (gender value) {
+                              setState(() {
+                                _ans = value;
+                              });
+                            },
+                          ),
+                          Text(
+                            'Others',
+                            style: textStyle(12, 'Poppins', kcGreyLightColor,
+                                FontWeight.w400),
+                          ),
+                        ],
                       ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      'Photo:',
-                      style: textStyle(
-                          12, 'Poppins', Color(0xff000000), FontWeight.w600),
-                    ),
-                    Container(
-                        // shadowColor: Color(0xff9cc6eb),
-                        // elevation: 2/,
+                      Text(
+                        'Job location:',
+                        style: textStyle(
+                            12, 'Poppins', Color(0xff000000), FontWeight.w600),
+                      ),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           border:
@@ -402,50 +370,105 @@ class Sign extends State {
                             Radius.circular(40),
                           ),
                         ),
+                        child: DropdownButton<String>(
+                          icon: Icon(Icons.arrow_drop_down),
+                          isExpanded: true,
+                          hint: Text(
+                            'Place',
+                            style: TextStyle(
+                              fontSize: 14,
+                            ),
+                          ),
+                          underline: SizedBox(),
+                          items: ['puthiyara', 'calicut city', 'pavangad']
+                              .map((String dropDownStringItem) {
+                            return DropdownMenuItem<String>(
+                              value: dropDownStringItem,
+                              child: Text(dropDownStringItem),
+                            );
+                          }).toList(),
+                          onChanged: (String newvalue) {
+                            // _dropdownList = [];
+                            // materialdoc.forEach((element) {
+                            //   if (element.sub.toLowerCase() ==
+                            //       newvalue.toLowerCase()) {
+                            //     _dropdownList.add(element);
+                            //   }
+                            // });
+                            setState(() {
+                              this.currentValueplace = newvalue;
+                            });
+                          },
+                          value: currentValueplace,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'Photo:',
+                        style: textStyle(
+                            12, 'Poppins', Color(0xff000000), FontWeight.w600),
+                      ),
+                      Container(
+                        // shadowColor: Color(0xff9cc6eb),
+                        // elevation: 2/,
 
                         // IconButton(
                         //     icon: Icon(Icons.add_circle_outline_rounded,
                         //         color: Colors.red),
                         //     onPressed: () {}),
-                        child: Flexible(
-                          child: TextField(
-                            decoration: InputDecoration(
-                              prefixIcon: IconButton(
-                                  icon: Icon(Icons.add_circle_outline_rounded,
-                                      color: Colors.red),
-                                  onPressed: () {}),
-                              hintText: 'upload',
-                              hintStyle: TextStyle(
-                                color: Color(0xff5578A3),
-                                fontSize: 17,
-                                fontStyle: FontStyle.normal,
-                              ),
-                              contentPadding: EdgeInsets.all(10),
-                              border: InputBorder.none,
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                                borderSide:
-                                    BorderSide(color: Colors.white, width: 0),
-                              ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border:
+                              Border.all(color: Color(0xffCACFE2), width: 0),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(40),
+                          ),
+                        ),
+                        // child: Flexible(
+                        //   flex: 1,
+
+                        child: TextField(
+                          decoration: InputDecoration(
+                            prefixIcon: IconButton(
+                                icon: Icon(Icons.add_circle_outline_rounded,
+                                    color: Colors.red),
+                                onPressed: () {}),
+                            hintText: 'upload',
+                            hintStyle: TextStyle(
+                              color: Color(0xff5578A3),
+                              fontSize: 17,
+                              fontStyle: FontStyle.normal,
+                            ),
+                            contentPadding: EdgeInsets.all(10),
+                            border: InputBorder.none,
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide:
+                                  BorderSide(color: Colors.white, width: 0),
                             ),
                           ),
-                        )),
-                    SizedBox(
-                      height: 50,
-                    ),
-                    CustomButton(
-                      color: kcPrimaryColor,
-                      ontap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Signup_2()));
-                      },
-                      title: 'NEXT',
-                      height: 50,
-                      width: 100,
-                    )
-                  ],
+                        ),
+                      ),
+                      // ),
+                      SizedBox(
+                        height: 50,
+                      ),
+                      CustomButton(
+                        color: kcPrimaryColor,
+                        ontap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Signup_2()));
+                        },
+                        title: 'NEXT',
+                        height: 50,
+                        width: 100,
+                      )
+                    ],
+                  ),
                 ),
               )
             ],
@@ -474,7 +497,10 @@ class Sign_2 extends State {
                 child: Row(
                   children: [
                     IconButton(
-                        icon: Icon(Icons.arrow_back_ios), onPressed: () {}),
+                        icon: Icon(Icons.arrow_back_ios),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        }),
                     Text(
                       'Registration form',
                       style: textStyle(
@@ -486,78 +512,92 @@ class Sign_2 extends State {
               SizedBox(
                 height: 30,
               ),
-              Container(
-                padding: EdgeInsets.only(
-                  left: 30,
-                  right: 30,
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      'Driving License:',
-                      style: textStyle(
-                          12, 'Poppins', Color(0xff000000), FontWeight.w600),
-                    ),
-                    CustomTextField(
-                      hint: 'license number',
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      'Bike Insurance:',
-                      style: textStyle(
-                          12, 'Poppins', Color(0xff000000), FontWeight.w600),
-                    ),
-                    CustomTextField(
-                      hint: 'Bike Insurance no',
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      'Aadhar Card:',
-                      style: textStyle(
-                          12, 'Poppins', Color(0xff000000), FontWeight.w600),
-                    ),
-                    CustomTextField(
-                      hint: 'Aadhar Card no',
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      'Bank Account Statement:',
-                      style: textStyle(
-                          12, 'Poppins', Color(0xff000000), FontWeight.w600),
-                    ),
-                    CustomTextField(
-                      hint: 'Bank Account Statement no',
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      'Health Certificate:',
-                      style: textStyle(
-                          12, 'Poppins', Color(0xff000000), FontWeight.w600),
-                    ),
-                    CustomTextField(
-                      hint: 'Health Certificate no',
-                    ),
-                    SizedBox(
-                      height: 50,
-                    ),
-                    CustomButton(
-                      color: kcPrimaryColor,
-                      ontap: () {},
-                      title: 'SUBMIT',
-                      height: 50,
-                      width: 100,
-                    )
-                  ],
+              Form(
+                child: Container(
+                  padding: EdgeInsets.only(
+                    left: 30,
+                    right: 30,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(
+                        'Driving License:',
+                        style: textStyle(
+                            12, 'Poppins', Color(0xff000000), FontWeight.w600),
+                      ),
+                      CustomTextFormField(
+                        hint: 'license number',
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'Bike Insurance:',
+                        style: textStyle(
+                            12, 'Poppins', Color(0xff000000), FontWeight.w600),
+                      ),
+                      CustomTextFormField(
+                        hint: 'Bike Insurance no',
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'Aadhar Card:',
+                        style: textStyle(
+                            12, 'Poppins', Color(0xff000000), FontWeight.w600),
+                      ),
+                      CustomTextFormField(
+                        hint: 'Aadhar Card no',
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'Bank Account Statement:',
+                        style: textStyle(
+                            12, 'Poppins', Color(0xff000000), FontWeight.w600),
+                      ),
+                      CustomTextFormField(
+                        hint: 'Bank Account Statement no',
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'Health Certificate:',
+                        style: textStyle(
+                            12, 'Poppins', Color(0xff000000), FontWeight.w600),
+                      ),
+                      CustomTextFormField(
+                        hint: 'Health Certificate no',
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'Your Password:',
+                        style: textStyle(
+                            12, 'Poppins', Color(0xff000000), FontWeight.w600),
+                      ),
+                      CustomTextFormField(
+                        hint: 'Password',
+                        validate: () {},
+                      ),
+                      SizedBox(
+                        height: 50,
+                      ),
+                      CustomButton(
+                        color: kcPrimaryColor,
+                        ontap: () {},
+                        title: 'SUBMIT',
+                        height: 50,
+                        width: 100,
+                      )
+                    ],
+                  ),
                 ),
               )
             ],

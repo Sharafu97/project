@@ -20,7 +20,10 @@ class _Settings extends State {
               child: Row(
                 children: [
                   IconButton(
-                      icon: Icon(Icons.arrow_back_ios), onPressed: () {}),
+                      icon: Icon(Icons.arrow_back_ios),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      }),
                   Text(
                     'Settings',
                     style: textStyle(
@@ -74,7 +77,10 @@ class _Settings extends State {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      print('leave');
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LeaveRequest()));
                     },
                     child: Container(
                       // color: Colors.red,
@@ -237,7 +243,10 @@ class ChangePass extends State {
               child: Row(
                 children: [
                   IconButton(
-                      icon: Icon(Icons.arrow_back_ios), onPressed: () {}),
+                      icon: Icon(Icons.arrow_back_ios),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      }),
                   Text(
                     'Change password',
                     style: textStyle(
@@ -320,7 +329,10 @@ class _Notification extends State {
               child: Row(
                 children: [
                   IconButton(
-                      icon: Icon(Icons.arrow_back_ios), onPressed: () {}),
+                      icon: Icon(Icons.arrow_back_ios),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      }),
                   Text(
                     'Change password',
                     style: textStyle(
@@ -367,6 +379,172 @@ class _Notification extends State {
                 );
               },
             ))
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class LeaveRequest extends StatefulWidget {
+  @override
+  _LeaveRequestState createState() => _LeaveRequestState();
+}
+
+class _LeaveRequestState extends State<LeaveRequest> {
+  DateTime currentdate = DateTime.now();
+  DateTime startdate = DateTime.now();
+  DateTime enddate = DateTime.now();
+
+  final DateTime pickedstartDate = DateTime.now();
+  Future<void> _selectstartDate(BuildContext context) async {
+    final DateTime pickedDate = await showDatePicker(
+        context: context,
+        initialDate: currentdate,
+        firstDate: DateTime(2015),
+        lastDate: DateTime(2050));
+    if (pickedDate != null && pickedDate != currentdate)
+      setState(() {
+        startdate = pickedDate;
+      });
+  }
+
+  final DateTime pickedendDate = DateTime.now();
+  Future<void> _selectendDate(BuildContext context) async {
+    final DateTime pickedDate = await showDatePicker(
+        context: context,
+        initialDate: currentdate,
+        firstDate: DateTime(2015),
+        lastDate: DateTime(2050));
+    if (pickedDate != null && pickedDate != currentdate)
+      setState(() {
+        enddate = pickedDate;
+      });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 30,
+            ),
+            Container(
+              child: Row(
+                children: [
+                  IconButton(
+                      icon: Icon(Icons.arrow_back_ios),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      }),
+                  Text(
+                    'Change password',
+                    style: textStyle(
+                        18, 'Poppins', kcSecondaryColor, FontWeight.w700),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 100,
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+              child: Container(
+                height: 200,
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Start Date:',
+                      style: textStyle(
+                          12, 'Poppins', Color(0xff000000), FontWeight.w600),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          height: 40,
+                          width: 200,
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              color: Color(0xfff5f5f5),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Text(
+                            startdate.toString(),
+                            style: textStyle(12, 'Poppins', kcSecondaryColor,
+                                FontWeight.w700),
+                          ),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            _selectstartDate(context);
+                          },
+                          child: Text(
+                            'Select a Date',
+                            style: textStyle(
+                                12, 'Poppins', Colors.white, FontWeight.w700),
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      'End Date:',
+                      style: textStyle(
+                          12, 'Poppins', Color(0xff000000), FontWeight.w600),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          height: 40,
+                          width: 200,
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              color: Color(0xfff5f5f5),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Text(
+                            enddate.toString(),
+                            style: textStyle(12, 'Poppins', kcSecondaryColor,
+                                FontWeight.w700),
+                          ),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            _selectendDate(context);
+                          },
+                          child: Text(
+                            'Select a Date',
+                            style: textStyle(
+                                12, 'Poppins', Colors.white, FontWeight.w700),
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            CustomButton(
+              height: 40,
+              width: 100,
+              title: 'Submit',
+              color: kcPrimaryColor,
+              ontap: () {},
+            )
           ],
         ),
       ),
