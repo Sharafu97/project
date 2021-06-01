@@ -90,8 +90,8 @@ class LoginPage extends State<MyLogin> {
   @override
   String username = 'aaaa';
   String password = '1111';
-  final logpass = GlobalKey();
-  final loguser = GlobalKey();
+  final GlobalKey logpass = GlobalKey();
+  final GlobalKey loguser = GlobalKey();
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
@@ -166,14 +166,14 @@ class LoginPage extends State<MyLogin> {
                 color: kcPrimaryColor,
                 title: 'Login',
                 ontap: () {
-                  // if (loguser == username && logpass == password) {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => NavBarContainer()));
-                  // } else {
-                  //   print('cant login');
-                  // }
+                  if (loguser == username && logpass == password) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => NavBarContainer()));
+                  } else {
+                    print('cant login');
+                  }
                 },
                 height: 50,
                 width: 100,
