@@ -22,7 +22,10 @@ class _Settings extends State {
                   IconButton(
                       icon: Icon(Icons.arrow_back_ios),
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => NavBarContainer()));
                       }),
                   Text(
                     'Settings',
