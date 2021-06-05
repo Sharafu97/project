@@ -24,8 +24,10 @@ TextStyle textStyle(
 
 class CustomTextField extends StatelessWidget {
   final String hint;
+  final textController;
 
-  const CustomTextField({Key key, this.hint}) : super(key: key);
+  const CustomTextField({Key key, this.hint, this.textController})
+      : super(key: key);
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
@@ -36,6 +38,7 @@ class CustomTextField extends StatelessWidget {
         border: Border.all(color: Color(0xffCACFE2), width: 0),
       ),
       child: TextField(
+        controller: textController,
         decoration: InputDecoration(
           hintText: hint,
           hintStyle: TextStyle(
@@ -57,7 +60,7 @@ class CustomTextField extends StatelessWidget {
 
 class CustomTextFormField extends StatelessWidget {
   final String hint;
-  final Function validate;
+  final Function(String) validate;
 
   const CustomTextFormField({Key key, this.hint, this.validate})
       : super(key: key);

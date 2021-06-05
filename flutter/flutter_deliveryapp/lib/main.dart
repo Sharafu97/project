@@ -90,8 +90,8 @@ class LoginPage extends State<MyLogin> {
   @override
   String username = 'aaaa';
   String password = '1111';
-  final GlobalKey logpass = GlobalKey();
-  final GlobalKey loguser = GlobalKey();
+  final logpass = TextEditingController();
+  final loguser = TextEditingController();
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
@@ -130,7 +130,7 @@ class LoginPage extends State<MyLogin> {
               ),
               CustomTextField(
                 hint: 'Username',
-                key: loguser,
+                textController: loguser,
               ),
               SizedBox(height: 20),
               Container(
@@ -143,7 +143,7 @@ class LoginPage extends State<MyLogin> {
               ),
               CustomTextField(
                 hint: 'Password',
-                key: logpass,
+                textController: logpass,
               ),
               Container(
                 alignment: Alignment.centerRight,
@@ -166,7 +166,7 @@ class LoginPage extends State<MyLogin> {
                 color: kcPrimaryColor,
                 title: 'Login',
                 ontap: () {
-                  if (loguser == username && logpass == password) {
+                  if (loguser.text == username && logpass.text == password) {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -219,6 +219,7 @@ class Signup extends StatefulWidget {
 class Sign extends State {
   gender _ans = gender.m;
   var currentValueplace;
+  final _formKey = GlobalKey<FormState>();
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
@@ -248,6 +249,7 @@ class Sign extends State {
                 height: 30,
               ),
               Form(
+                key: _formKey,
                 child: Container(
                   padding: EdgeInsets.only(
                     left: 30,
@@ -264,6 +266,15 @@ class Sign extends State {
                       ),
                       CustomTextFormField(
                         hint: 'Name',
+                        validate: (value) {
+                          if (value == null) {
+                            return 'it is null';
+                          } else if (value.isEmpty) {
+                            return 'Please enter some text';
+                          } else {
+                            return null;
+                          }
+                        },
                       ),
                       SizedBox(
                         height: 20,
@@ -275,6 +286,15 @@ class Sign extends State {
                       ),
                       CustomTextFormField(
                         hint: 'Mobile',
+                        validate: (value) {
+                          if (value == null) {
+                            return 'it is null';
+                          } else if (value.isEmpty) {
+                            return 'Please enter some text';
+                          } else {
+                            return null;
+                          }
+                        },
                       ),
                       SizedBox(
                         height: 20,
@@ -458,10 +478,12 @@ class Sign extends State {
                       CustomButton(
                         color: kcPrimaryColor,
                         ontap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Signup_2()));
+                          if (_formKey.currentState.validate()) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Signup_2()));
+                          }
                         },
                         title: 'NEXT',
                         height: 50,
@@ -485,6 +507,7 @@ class Signup_2 extends StatefulWidget {
 
 class Sign_2 extends State {
   Widget build(BuildContext context) {
+    final _formKey = GlobalKey<FormState>();
     return Scaffold(
       body: Center(
         child: Container(
@@ -513,6 +536,7 @@ class Sign_2 extends State {
                 height: 30,
               ),
               Form(
+                key: _formKey,
                 child: Container(
                   padding: EdgeInsets.only(
                     left: 30,
@@ -529,6 +553,15 @@ class Sign_2 extends State {
                       ),
                       CustomTextFormField(
                         hint: 'license number',
+                        validate: (value) {
+                          if (value == null) {
+                            return 'it is null';
+                          } else if (value.isEmpty) {
+                            return 'Please enter some text';
+                          } else {
+                            return null;
+                          }
+                        },
                       ),
                       SizedBox(
                         height: 20,
@@ -540,6 +573,15 @@ class Sign_2 extends State {
                       ),
                       CustomTextFormField(
                         hint: 'Bike Insurance no',
+                        validate: (value) {
+                          if (value == null) {
+                            return 'it is null';
+                          } else if (value.isEmpty) {
+                            return 'Please enter some text';
+                          } else {
+                            return null;
+                          }
+                        },
                       ),
                       SizedBox(
                         height: 20,
@@ -551,6 +593,15 @@ class Sign_2 extends State {
                       ),
                       CustomTextFormField(
                         hint: 'Aadhar Card no',
+                        validate: (value) {
+                          if (value == null) {
+                            return 'it is null';
+                          } else if (value.isEmpty) {
+                            return 'Please enter some text';
+                          } else {
+                            return null;
+                          }
+                        },
                       ),
                       SizedBox(
                         height: 20,
@@ -584,14 +635,29 @@ class Sign_2 extends State {
                       ),
                       CustomTextFormField(
                         hint: 'Password',
-                        validate: () {},
+                        validate: (value) {
+                          if (value == null) {
+                            return 'it is null';
+                          } else if (value.isEmpty) {
+                            return 'Please enter some text';
+                          } else {
+                            return null;
+                          }
+                        },
                       ),
                       SizedBox(
                         height: 50,
                       ),
                       CustomButton(
                         color: kcPrimaryColor,
-                        ontap: () {},
+                        ontap: () {
+                          if (_formKey.currentState.validate()) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MyLogin()));
+                          }
+                        },
                         title: 'SUBMIT',
                         height: 50,
                         width: 100,
