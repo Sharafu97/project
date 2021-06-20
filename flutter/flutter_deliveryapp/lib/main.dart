@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_deliveryapp/apiServ/apiService.dart';
 import 'package:flutter_deliveryapp/customitems.dart';
+import 'package:file_picker/file_picker.dart';
+
 import 'package:flutter_deliveryapp/homepage.dart';
+import 'package:flutter_deliveryapp/model/usermodel.dart';
 import 'package:flutter_deliveryapp/orders.dart';
 import 'package:flutter_deliveryapp/profile.dart';
 import 'package:flutter_deliveryapp/settings.dart';
@@ -88,8 +92,46 @@ class MyLogin extends StatefulWidget {
 
 class LoginPage extends State<MyLogin> {
   @override
-  String username = 'aaaa';
-  String password = '1111';
+  String errorMessage = '';
+  bool hasErrorOccoured = false;
+  bool loading = false;
+
+  Future<void> userLogin() async {
+    print(loguser.text);
+    print(logpass.text);
+    loading = true;
+    setState(() {});
+    // print(userlog.toString());
+    // print(passlog.toString());
+    // passlog.toString();
+    try {
+      final user = await ApiServices().login(
+        userName: loguser.text,
+        password: logpass.text,
+      );
+      print('true');
+      hasErrorOccoured = false;
+      UserData().user = user;
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => NavBarContainer()));
+    } catch (e) {
+      hasErrorOccoured = true;
+      print('falseeeee');
+      print(UserModel().fullname);
+      errorMessage = e.toString();
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(errorMessage)));
+    }
+    loading = false;
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // userLogin();
+  }
+
   final logpass = TextEditingController();
   final loguser = TextEditingController();
   Widget build(BuildContext context) {
@@ -165,16 +207,17 @@ class LoginPage extends State<MyLogin> {
               CustomButton(
                 color: kcPrimaryColor,
                 title: 'Login',
-                ontap: () {
-                  if (loguser.text == username && logpass.text == password) {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => NavBarContainer()));
-                  } else {
-                    print('cant login');
-                  }
-                },
+                ontap: () async => userLogin(),
+                // {
+                //   if (loguser.text == username && logpass.text == password) {
+                //     Navigator.push(
+                //         context,
+                //         MaterialPageRoute(
+                //             builder: (context) => NavBarContainer()));
+                //   } else {
+                //     print('cant login');
+                //   }
+                // },
                 height: 50,
                 width: 100,
               ),
@@ -454,7 +497,14 @@ class Sign extends State {
                             prefixIcon: IconButton(
                                 icon: Icon(Icons.add_circle_outline_rounded,
                                     color: Colors.red),
-                                onPressed: () {}),
+                                onPressed: () {
+                                  // FilePickerResult  result = await FilePicker.platform.pickFiles();
+                                  // if(result != null) {
+                                  //   File file = File(result.files.single.path);
+                                  //   } else {
+                                  //        // User canceled the picker
+                                  //        }
+                                }),
                             hintText: 'upload',
                             hintStyle: TextStyle(
                               color: Color(0xff5578A3),
