@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_deliveryapp/model/usermodel.dart';
 import 'package:flutter_deliveryapp/orders.dart';
 
 import 'customitems.dart';
@@ -57,7 +58,7 @@ class Homepage extends State {
                       height: 30,
                     ),
                     Text(
-                      'Hi Name!!',
+                      'Hi ${UserData().user.fullname}',
                       style: textStyle(
                           18, 'Poppins', kcSecondaryColor, FontWeight.w700),
                     ),

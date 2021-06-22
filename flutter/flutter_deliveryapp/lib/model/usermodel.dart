@@ -54,6 +54,8 @@ class UserModel {
     termsAccepted = json['terms_accepted'];
   }
 
+  get token => null;
+
   // Map<String, dynamic> toJson() {
   //   final Map<String, dynamic> data = new Map<String, dynamic>();
   //   data['delivery_boy_id'] = this.deliveryBoyId;
@@ -87,6 +89,81 @@ class Regions {
   //   final Map<String, dynamic> data = new Map<String, dynamic>();
   //   data['id'] = this.id;
   //   data['name'] = this.name;
+  //   return data;
+  // }
+}
+
+class UserProfile {
+  UserProfile._privateConstructor();
+
+  static final UserProfile _instance = UserProfile._privateConstructor();
+
+  factory UserProfile() {
+    return _instance;
+  }
+  ProfileData pro = ProfileData();
+}
+
+class ProfileData {
+  String name;
+  String mobile;
+  Null joinDate;
+  int todayTasks;
+  int weekTasks;
+  int monthTasks;
+  int rating;
+  int totalTasks;
+  int averageDeliveryTime;
+  int averageTime;
+  List<Null> achievements;
+
+  ProfileData(
+      {this.name,
+      this.mobile,
+      this.joinDate,
+      this.todayTasks,
+      this.weekTasks,
+      this.monthTasks,
+      this.rating,
+      this.totalTasks,
+      this.averageDeliveryTime,
+      this.averageTime,
+      this.achievements});
+
+  ProfileData.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    mobile = json['mobile'];
+    joinDate = json['join_date'];
+    todayTasks = json['today_tasks'];
+    weekTasks = json['week_tasks'];
+    monthTasks = json['month_tasks'];
+    rating = json['rating'];
+    totalTasks = json['total_tasks'];
+    averageDeliveryTime = json['average_delivery_time'];
+    averageTime = json['average_time'];
+    if (json['achievements'] != null) {
+      achievements = new List<Null>();
+      json['achievements'].forEach((v) {
+        // achievements.add(new Null.fromJson(v));
+      });
+    }
+  }
+
+  // Map<String, dynamic> toJson() {
+  //   final Map<String, dynamic> data = new Map<String, dynamic>();
+  //   data['name'] = this.name;
+  //   data['mobile'] = this.mobile;
+  //   data['join_date'] = this.joinDate;
+  //   data['today_tasks'] = this.todayTasks;
+  //   data['week_tasks'] = this.weekTasks;
+  //   data['month_tasks'] = this.monthTasks;
+  //   data['rating'] = this.rating;
+  //   data['total_tasks'] = this.totalTasks;
+  //   data['average_delivery_time'] = this.averageDeliveryTime;
+  //   data['average_time'] = this.averageTime;
+  //   if (this.achievements != null) {
+  //     data['achievements'] = this.achievements.map((v) => v.toJson()).toList();
+  //   }
   //   return data;
   // }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_deliveryapp/model/usermodel.dart';
 
 import 'customitems.dart';
 
@@ -49,11 +50,11 @@ class _Profile extends State {
                   height: 10,
                 ),
                 Text(
-                  'NAME',
+                  '${UserProfile().pro.name}',
                   style: textStyle(14, 'Poppins', kcRedColor, FontWeight.w700),
                 ),
                 Text(
-                  'MOBILE NO',
+                  '${UserProfile().pro.mobile}',
                   style: textStyle(
                       12, 'Poppins', kcGreyLightColor, FontWeight.w500),
                 ),

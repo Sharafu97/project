@@ -97,8 +97,6 @@ class LoginPage extends State<MyLogin> {
   bool loading = false;
 
   Future<void> userLogin() async {
-    print(loguser.text);
-    print(logpass.text);
     loading = true;
     setState(() {});
     // print(userlog.toString());
@@ -109,15 +107,19 @@ class LoginPage extends State<MyLogin> {
         userName: loguser.text,
         password: logpass.text,
       );
-      print('true');
+      print('trueeeee');
+
       hasErrorOccoured = false;
       UserData().user = user;
+      print(UserData().user.tocken);
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => NavBarContainer()));
+      final userpro = await ApiServices().profile();
+      UserProfile().pro = userpro;
     } catch (e) {
       hasErrorOccoured = true;
       print('falseeeee');
-      print(UserModel().fullname);
+      // print(UserModel().tocken);
       errorMessage = e.toString();
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(errorMessage)));
