@@ -9,6 +9,19 @@ class Orders extends StatefulWidget {
 
 class _Orders extends State {
   Widget build(BuildContext contaxt) {
+    var count = Details().buttonCounter;
+    String text;
+    switch (count) {
+      case 1:
+        text = 'not accept';
+        break;
+      case 2:
+        text = 'picked';
+        break;
+      case 3:
+        text = 'deliverd';
+        break;
+    }
     return Scaffold(
       body: Center(
         child: Column(
@@ -247,7 +260,7 @@ class _Orders extends State {
                                         borderRadius: BorderRadius.circular(40),
                                       ),
                                       child: Text(
-                                        'Accepted',
+                                        text,
                                         style: textStyle(12, 'Poppins',
                                             Colors.white, FontWeight.w500),
                                       ),
@@ -498,10 +511,18 @@ class _Orders extends State {
 }
 
 class OrderDetails extends StatefulWidget {
-  _OrderDetails createState() => _OrderDetails();
+  Details createState() => Details();
 }
 
-class _OrderDetails extends State {
+class Details extends State {
+  var buttonCounter = 0;
+  var buttonText = 'Accept';
+  // void initState() {
+  //   super.initState();
+  //   var buttonCounter=0;
+  //   var buttonText = 'Accept';
+  // }
+
   Widget build(BuildContext contaxt) {
     return Scaffold(
       body: Center(
@@ -992,8 +1013,27 @@ class _OrderDetails extends State {
                                 ),
                               )),
                           ElevatedButton(
-                              onPressed: () {},
-                              child: Text('Accept'),
+                              onPressed: () {
+                                buttonCounter += 1;
+                                switch (buttonCounter) {
+                                  case 1:
+                                    setState(() {
+                                      buttonText = 'Picked';
+                                    });
+                                    break;
+                                  case 2:
+                                    setState(() {
+                                      buttonText = 'deliverd';
+                                    });
+                                    break;
+                                  // case 3:
+                                  //   setState(() {
+                                  //     buttonText = 'deliverd';
+                                  //   });
+                                  //   break;
+                                }
+                              },
+                              child: Text(buttonText),
                               style: ElevatedButton.styleFrom(
                                 primary: Colors.green,
                                 minimumSize: Size(100, 30),

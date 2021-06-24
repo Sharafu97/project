@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_deliveryapp/apiServ/apiService.dart';
+import 'package:flutter_deliveryapp/model/usermodel.dart';
 
 import 'customitems.dart';
 
@@ -53,12 +55,12 @@ class _Settings extends State {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'NAME',
+                        '${UserData().user.fullname}',
                         style: textStyle(
                             14, 'Poppins', kcRedColor, FontWeight.w700),
                       ),
                       Text(
-                        'MOBILE NO',
+                        '${UserData().user.deliveryBoyId}',
                         style: textStyle(
                             12, 'Poppins', kcMediumGreyColor, FontWeight.w500),
                       )
@@ -398,6 +400,46 @@ class _LeaveRequestState extends State<LeaveRequest> {
   DateTime currentdate = DateTime.now();
   DateTime startdate = DateTime.now();
   DateTime enddate = DateTime.now();
+  String errorMessage = '';
+  bool hasErrorOccoured = false;
+  bool loading = false;
+  final leaveType = TextEditingController();
+  final noDays = TextEditingController();
+  final reson = TextEditingController();
+
+  Future<void> userLeave() {
+    // DateTime sDate, DateTime eDate, String ltype,
+    //   String ldays, String lreason) async {
+    loading = true;
+    setState(() {});
+    print(startdate);
+    print(enddate);
+    print(leaveType.toString());
+    print(noDays.toString());
+    print(reson.toString());
+
+    // try {
+    //   // final user = await ApiServices().login();
+    //   print('trueeeee');
+
+    //   hasErrorOccoured = false;
+    //   // UserData().user = user;
+    //   // Navigator.push(
+    //   //     context, MaterialPageRoute(builder: (context) => NavBarContainer()));
+    //   // final userpro = await ApiServices().profile();
+    //   // UserProfile().pro = userpro;
+    // } catch (e) {
+    //   // hasErrorOccoured = true;
+    //   // print('falseeeee');
+    //   // print(UserProfile().pro.name);
+    //   // // print(UserModel().tocken);
+    //   // errorMessage = e.toString();
+    //   // ScaffoldMessenger.of(context)
+    //   //     .showSnackBar(SnackBar(content: Text(errorMessage)));
+    // }
+    // loading = false;
+    // setState(() {});
+  }
 
   final DateTime pickedstartDate = DateTime.now();
   Future<void> _selectstartDate(BuildContext context) async {
@@ -443,7 +485,7 @@ class _LeaveRequestState extends State<LeaveRequest> {
                         Navigator.pop(context);
                       }),
                   Text(
-                    'Change password',
+                    'Leave Apply',
                     style: textStyle(
                         18, 'Poppins', kcSecondaryColor, FontWeight.w700),
                   )
@@ -538,15 +580,73 @@ class _LeaveRequestState extends State<LeaveRequest> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 30,
-            ),
-            CustomButton(
-              height: 40,
-              width: 100,
-              title: 'Submit',
-              color: kcPrimaryColor,
-              ontap: () {},
+            Padding(
+              padding: const EdgeInsets.all(30.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(left: 20),
+                    child: Text(
+                      'Leave type',
+                      style: textStyle(13, 'Popins',
+                          Color(0xff000000).withOpacity(.6), FontWeight.w400),
+                    ),
+                  ),
+                  CustomTextField(
+                    hint: 'Casual/Medical',
+                    textController: leaveType,
+                  ),
+                  SizedBox(height: 10),
+                  Container(
+                    padding: EdgeInsets.only(left: 20),
+                    child: Text(
+                      'Days',
+                      style: textStyle(13, 'Popins',
+                          Color(0xff000000).withOpacity(.6), FontWeight.w400),
+                    ),
+                  ),
+                  CustomTextField(
+                    hint: 'Number Of days',
+                    textController: noDays,
+                  ),
+                  SizedBox(height: 10),
+                  Container(
+                    padding: EdgeInsets.only(left: 20),
+                    child: Text(
+                      'Reason',
+                      style: textStyle(13, 'Popins',
+                          Color(0xff000000).withOpacity(.6), FontWeight.w400),
+                    ),
+                  ),
+                  CustomTextField(
+                    hint: 'Reason for leave',
+                    textController: reson,
+
+                    // textController: logpass,
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  CustomButton(
+                      height: 40,
+                      width: 100,
+                      title: 'Submit',
+                      color: kcPrimaryColor,
+                      ontap: () {
+                        print(startdate.day);
+                        print(enddate);
+                        print(leaveType.text);
+                        print(noDays.text);
+                        print(reson.text);
+                      }
+                      // userLeave();
+                      // startdate, startdate, leaveType.text,
+                      //   noDays.text, reson.text
+                      // },
+                      ),
+                ],
+              ),
             )
           ],
         ),

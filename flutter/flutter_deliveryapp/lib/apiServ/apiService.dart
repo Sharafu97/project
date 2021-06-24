@@ -22,13 +22,13 @@ class ApiServices {
       print(res.body);
       Map<String, dynamic> data = jsonDecode(res.body);
 
-      print(data['data']);
+      // print(data['data']);
 
       if (res.statusCode == 200 && data['status'] == true) {
         _user = UserModel.fromJson(data['data']);
         _user.tocken = data['token'];
-        print('sample');
-        print(_user.fullname);
+        // print('sample');
+        // print(_user.fullname);
 
         // print('this is');
         // print(tock);
@@ -42,7 +42,7 @@ class ApiServices {
   }
 
   Future<ProfileData> profile() async {
-    ProfileData pro = ProfileData();
+    ProfileData _pro = ProfileData();
     try {
       final res = await http.post(
         Uri.http(BASE_API_URL, 'api/delivery-app/profile'),
@@ -51,17 +51,18 @@ class ApiServices {
       );
       print(res.body);
       print(UserData().user.tocken);
-      // Map<String, dynamic>
-      final prodata = jsonDecode(res.body);
+      // Map<String, dynamic> data = jsonDecode(res.body);
 
-      print(prodata['data']);
+      // _pro = ProfileData.fromJson(prodata['data']);
 
       if (res.statusCode == 200) {
-        pro = ProfileData.fromJson(prodata['data']);
-      } else {
-        throw Exception(prodata['msg']);
+        return ProfileData.fromJson(jsonDecode(res.body));
+        // print(_pro);
       }
-      return pro;
+      // else {
+      //   throw Exception(data['msg']);
+      // }
+      // return _pro;
     } catch (e) {
       throw Exception(e.toString());
     }

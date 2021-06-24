@@ -59,7 +59,7 @@ class _Profile extends State {
                       12, 'Poppins', kcGreyLightColor, FontWeight.w500),
                 ),
                 Text(
-                  'Since:Date',
+                  'Since:${UserProfile().pro.joinDate}',
                   style: textStyle(
                       12, 'Poppins', kcMediumGreyColor, FontWeight.w500),
                 ),
@@ -100,7 +100,7 @@ class _Profile extends State {
                 Column(
                   children: [
                     Text(
-                      '13',
+                      '${UserProfile().pro.todayTasks}',
                       style: textStyle(
                           18, 'Poppins', kcGreyLightColor, FontWeight.w500),
                     ),
@@ -114,7 +114,7 @@ class _Profile extends State {
                 Column(
                   children: [
                     Text(
-                      '66',
+                      '${UserProfile().pro.weekTasks}',
                       style: textStyle(
                           18, 'Poppins', kcGreyLightColor, FontWeight.w500),
                     ),
@@ -128,7 +128,7 @@ class _Profile extends State {
                 Column(
                   children: [
                     Text(
-                      '182',
+                      '${UserProfile().pro.monthTasks}',
                       style: textStyle(
                           18, 'Poppins', kcGreyLightColor, FontWeight.w500),
                     ),
@@ -189,7 +189,7 @@ class _Profile extends State {
             decoration: BoxDecoration(
                 color: kcPrimaryColor, borderRadius: BorderRadius.circular(40)),
             child: Text(
-              '1105 Orders',
+              '${UserProfile().pro.totalTasks} Orders',
               style: textStyle(14, 'Poppins', Colors.white, FontWeight.w700),
             ),
           )
