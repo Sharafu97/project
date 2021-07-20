@@ -12,6 +12,8 @@ class _HomeScreenState extends State<HomeScreen> {
   String errorMessage = '';
   bool hasErrorOccoured = false;
   bool loading = false;
+  final passlog = TextEditingController();
+  final userlog = TextEditingController();
 
   Future<void> loginUser() async {
     loading = true;

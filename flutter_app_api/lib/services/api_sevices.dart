@@ -52,7 +52,7 @@ class ApiServices {
     UserModel _user = UserModel();
     try {
       final res = await http.get(
-        // TODO
+        //  
         Uri.http(BASE_API_URL, 'appdemo/rest/api/User/'),
         headers: HEADERS,
       );

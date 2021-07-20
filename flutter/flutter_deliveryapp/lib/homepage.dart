@@ -79,13 +79,12 @@ class Homepage extends State {
             ),
             Expanded(
               child: ListView.builder(
-                  itemCount: 3,
+                  itemCount: 1,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: EdgeInsets.only(bottom: 10, left: 30, right: 30),
                       child: GestureDetector(
                         onTap: () {
-                          print('chekking');
                           Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -112,7 +111,7 @@ class Homepage extends State {
                                     Column(
                                       children: [
                                         Text(
-                                          'Order details',
+                                          '10001',
                                           style: textStyle(
                                               10,
                                               'poppins',
@@ -120,7 +119,7 @@ class Homepage extends State {
                                               FontWeight.w400),
                                         ),
                                         Text(
-                                          'dd mm yy|00:00',
+                                          '2020-10-09|13:15:00',
                                           style: textStyle(
                                               9,
                                               'poppins',
@@ -201,7 +200,7 @@ class Homepage extends State {
                                                     FontWeight.w500),
                                               ),
                                               Text(
-                                                'Name',
+                                                'Daily Groce',
                                                 style: textStyle(
                                                     12,
                                                     'poppins',
@@ -209,7 +208,7 @@ class Homepage extends State {
                                                     FontWeight.w500),
                                               ),
                                               Text(
-                                                'Address',
+                                                'Calicut',
                                                 style: textStyle(
                                                     10,
                                                     'poppins',
@@ -231,7 +230,7 @@ class Homepage extends State {
                                                     FontWeight.w500),
                                               ),
                                               Text(
-                                                'Name',
+                                                'Test',
                                                 style: textStyle(
                                                     12,
                                                     'poppins',
@@ -239,7 +238,7 @@ class Homepage extends State {
                                                     FontWeight.w500),
                                               ),
                                               Text(
-                                                'Address',
+                                                'Test Address',
                                                 style: textStyle(
                                                     10,
                                                     'poppins',
@@ -270,7 +269,7 @@ class Homepage extends State {
                                               FontWeight.w500),
                                         ),
                                         Text(
-                                          '₹ 250',
+                                          '₹ 405.00',
                                           style: textStyle(
                                               12,
                                               'Poppins',
@@ -288,7 +287,7 @@ class Homepage extends State {
                                         borderRadius: BorderRadius.circular(40),
                                       ),
                                       child: Text(
-                                        'Accepted',
+                                        'Details',
                                         style: textStyle(12, 'Poppins',
                                             Colors.white, FontWeight.w500),
                                       ),

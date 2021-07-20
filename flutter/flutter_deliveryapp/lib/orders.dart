@@ -9,19 +9,19 @@ class Orders extends StatefulWidget {
 
 class _Orders extends State {
   Widget build(BuildContext contaxt) {
-    var count = Details().buttonCounter;
-    String text;
-    switch (count) {
-      case 1:
-        text = 'not accept';
-        break;
-      case 2:
-        text = 'picked';
-        break;
-      case 3:
-        text = 'deliverd';
-        break;
-    }
+    // var count = Details().buttonCounter;
+    // String text;
+    // switch (count) {
+    //   case 1:
+    //     text = 'not accept';
+    //     break;
+    //   case 2:
+    //     text = 'picked';
+    //     break;
+    //   case 3:
+    //     text = 'deliverd';
+    //     break;
+    // }
     return Scaffold(
       body: Center(
         child: Column(
@@ -52,7 +52,7 @@ class _Orders extends State {
             Flexible(
               // flex: 2,
               child: ListView.builder(
-                  itemCount: 3,
+                  itemCount: 1,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: EdgeInsets.only(bottom: 10, left: 30, right: 30),
@@ -84,7 +84,7 @@ class _Orders extends State {
                                     Column(
                                       children: [
                                         Text(
-                                          'Order details',
+                                          '10001',
                                           style: textStyle(
                                               10,
                                               'poppins',
@@ -92,7 +92,7 @@ class _Orders extends State {
                                               FontWeight.w400),
                                         ),
                                         Text(
-                                          'dd mm yy|00:00',
+                                          '2020-10-09|13:15:00',
                                           style: textStyle(
                                               9,
                                               'poppins',
@@ -173,7 +173,7 @@ class _Orders extends State {
                                                     FontWeight.w500),
                                               ),
                                               Text(
-                                                'Name',
+                                                'Daily Groce',
                                                 style: textStyle(
                                                     12,
                                                     'poppins',
@@ -181,7 +181,7 @@ class _Orders extends State {
                                                     FontWeight.w500),
                                               ),
                                               Text(
-                                                'Address',
+                                                'Calicut',
                                                 style: textStyle(
                                                     10,
                                                     'poppins',
@@ -203,7 +203,7 @@ class _Orders extends State {
                                                     FontWeight.w500),
                                               ),
                                               Text(
-                                                'Name',
+                                                'Test',
                                                 style: textStyle(
                                                     12,
                                                     'poppins',
@@ -211,7 +211,7 @@ class _Orders extends State {
                                                     FontWeight.w500),
                                               ),
                                               Text(
-                                                'Address',
+                                                'Test Address',
                                                 style: textStyle(
                                                     10,
                                                     'poppins',
@@ -242,7 +242,7 @@ class _Orders extends State {
                                               FontWeight.w500),
                                         ),
                                         Text(
-                                          '₹ 250',
+                                          '₹ 405.00',
                                           style: textStyle(
                                               12,
                                               'Poppins',
@@ -260,7 +260,7 @@ class _Orders extends State {
                                         borderRadius: BorderRadius.circular(40),
                                       ),
                                       child: Text(
-                                        text,
+                                        'Details',
                                         style: textStyle(12, 'Poppins',
                                             Colors.white, FontWeight.w500),
                                       ),
@@ -293,7 +293,7 @@ class _Orders extends State {
             Flexible(
               // flex: 3,
               child: ListView.builder(
-                  itemCount: 3,
+                  itemCount: 0,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: EdgeInsets.only(bottom: 10, left: 30, right: 30),
@@ -570,12 +570,12 @@ class Details extends State {
                         Column(
                           children: [
                             Text(
-                              'Oeder Details',
+                              '10001',
                               style: textStyle(10, 'Poppins', kcMediumGreyColor,
                                   FontWeight.w400),
                             ),
                             Text(
-                              'Oeder Details',
+                              '2020-10-09|13:15:00',
                               style: textStyle(10, 'Poppins', Color(0xffbcbbbb),
                                   FontWeight.w500),
                             )
@@ -648,20 +648,20 @@ class Details extends State {
                                           kcSecondaryColor, FontWeight.w600),
                                     ),
                                     Text(
-                                      'Name',
+                                      'Daily Groce',
                                       style: textStyle(14, 'poppins',
                                           kcSecondaryColor, FontWeight.w500),
                                     ),
                                     Text(
-                                      'Address',
+                                      'Calicut',
                                       style: textStyle(14, 'poppins',
                                           kcGreyLightColor, FontWeight.w500),
                                     ),
-                                    Text(
-                                      'Address',
-                                      style: textStyle(14, 'poppins',
-                                          kcGreyLightColor, FontWeight.w500),
-                                    ),
+                                    // Text(
+                                    //   'Address',
+                                    //   style: textStyle(14, 'poppins',
+                                    //       kcGreyLightColor, FontWeight.w500),
+                                    // ),
                                   ],
                                 ),
                               ),
@@ -678,25 +678,25 @@ class Details extends State {
                                           kcSecondaryColor, FontWeight.w600),
                                     ),
                                     Text(
-                                      'Name',
+                                      'Test',
                                       style: textStyle(14, 'poppins',
                                           kcSecondaryColor, FontWeight.w500),
                                     ),
                                     Text(
-                                      'Address',
+                                      'Test Address',
                                       style: textStyle(14, 'poppins',
                                           kcGreyLightColor, FontWeight.w500),
                                     ),
-                                    Text(
-                                      'Address',
-                                      style: textStyle(14, 'poppins',
-                                          kcGreyLightColor, FontWeight.w500),
-                                    ),
-                                    Text(
-                                      'Address',
-                                      style: textStyle(14, 'poppins',
-                                          kcGreyLightColor, FontWeight.w500),
-                                    ),
+                                    // Text(
+                                    //   'Address',
+                                    //   style: textStyle(14, 'poppins',
+                                    //       kcGreyLightColor, FontWeight.w500),
+                                    // ),
+                                    // Text(
+                                    //   'Address',
+                                    //   style: textStyle(14, 'poppins',
+                                    //       kcGreyLightColor, FontWeight.w500),
+                                    // ),
                                   ],
                                 ),
                               )
@@ -797,61 +797,61 @@ class Details extends State {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Itemset',
+                                    'Purchased Itemset',
                                     style: textStyle(12, 'poppins',
                                         kcMediumGreyColor, FontWeight.w600),
                                   ),
                                   Text(
-                                    'qty',
+                                    '',
                                     style: textStyle(10, 'poppins',
                                         Color(0xffb4b4b4), FontWeight.w400),
                                   ),
                                 ],
                               ),
                               Text(
-                                '000.00',
+                                '350.00',
                                 style: textStyle(
                                     12, 'poppins', kcRedColor, FontWeight.w600),
                               ),
                             ],
                           ),
                           Divider(),
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //   children: [
+                          //     Column(
+                          //       crossAxisAlignment: CrossAxisAlignment.start,
+                          //       children: [
+                          //         Text(
+                          //           'Itemset',
+                          //           style: textStyle(12, 'poppins',
+                          //               kcMediumGreyColor, FontWeight.w600),
+                          //         ),
+                          //         Text(
+                          //           'qty',
+                          //           style: textStyle(10, 'poppins',
+                          //               Color(0xffb4b4b4), FontWeight.w400),
+                          //         ),
+                          //       ],
+                          //     ),
+                          //     Text(
+                          //       '000.00',
+                          //       style: textStyle(
+                          //           12, 'poppins', kcRedColor, FontWeight.w600),
+                          //     ),
+                          //   ],
+                          // ),
+                          // Divider(),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Itemset',
-                                    style: textStyle(12, 'poppins',
-                                        kcMediumGreyColor, FontWeight.w600),
-                                  ),
-                                  Text(
-                                    'qty',
-                                    style: textStyle(10, 'poppins',
-                                        Color(0xffb4b4b4), FontWeight.w400),
-                                  ),
-                                ],
-                              ),
                               Text(
-                                '000.00',
-                                style: textStyle(
-                                    12, 'poppins', kcRedColor, FontWeight.w600),
-                              ),
-                            ],
-                          ),
-                          Divider(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Item total',
+                                '',
                                 style: textStyle(12, 'poppins',
                                     kcGreyLightColor, FontWeight.w500),
                               ),
                               Text(
-                                '000.00',
+                                '',
                                 style: textStyle(12, 'poppins',
                                     kcGreyLightColor, FontWeight.w500),
                               ),
@@ -866,7 +866,7 @@ class Details extends State {
                                     kcGreyLightColor, FontWeight.w500),
                               ),
                               Text(
-                                '000.00',
+                                '25.00',
                                 style: textStyle(12, 'poppins',
                                     kcGreyLightColor, FontWeight.w500),
                               ),
@@ -881,7 +881,7 @@ class Details extends State {
                                     kcGreyLightColor, FontWeight.w500),
                               ),
                               Text(
-                                '000.00',
+                                '10.00',
                                 style: textStyle(12, 'poppins',
                                     kcGreyLightColor, FontWeight.w500),
                               ),
@@ -911,7 +911,7 @@ class Details extends State {
                                     kcGreyLightColor, FontWeight.w500),
                               ),
                               Text(
-                                '000.00',
+                                '10.00',
                                 style: textStyle(12, 'poppins',
                                     kcGreyLightColor, FontWeight.w500),
                               ),
@@ -926,7 +926,7 @@ class Details extends State {
                                     kcGreyLightColor, FontWeight.w500),
                               ),
                               Text(
-                                '000.00',
+                                '10.00',
                                 style: textStyle(12, 'poppins',
                                     kcGreyLightColor, FontWeight.w500),
                               ),
@@ -944,7 +944,7 @@ class Details extends State {
                                     kcGreyLightColor, FontWeight.w600),
                               ),
                               Text(
-                                '000.00',
+                                '405.00',
                                 style: textStyle(24, 'poppins',
                                     kcGreyLightColor, FontWeight.w700),
                               ),
@@ -991,7 +991,7 @@ class Details extends State {
                           16, 'poppins', kcSecondaryColor, FontWeight.w500),
                     ),
                     Text(
-                      '₹ 250',
+                      '₹ 405.00',
                       textAlign: TextAlign.center,
                       style:
                           textStyle(24, 'poppins', kcRedColor, FontWeight.w600),

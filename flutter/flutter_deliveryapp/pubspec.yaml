@@ -27,6 +27,8 @@ dependencies:
   persistent_bottom_nav_bar: any
   file_picker: ^3.0.2+2
   http: ^0.13.3
+  intl: ^0.17.0
+  
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -44,6 +46,7 @@ dev_dependencies:
 flutter:
   assets:
     - assets/image.png
+    - assets/imgPerson.png
   fonts:
     - family: Popins
       fonts:

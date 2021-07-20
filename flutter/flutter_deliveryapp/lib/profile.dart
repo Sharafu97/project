@@ -43,8 +43,8 @@ class _Profile extends State {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 CircleAvatar(
-                  backgroundColor: Colors.red,
                   radius: 40,
+                  child: Image.asset('assets/imgPerson.png'),
                 ),
                 SizedBox(
                   height: 10,
@@ -240,7 +240,7 @@ class _Bonus extends State {
                   Container(
                     alignment: Alignment.center,
                     child: Text(
-                      '₹ 250',
+                      '₹ 0',
                       style:
                           textStyle(24, 'Poppins', kcRedColor, FontWeight.w600),
                     ),
@@ -257,25 +257,25 @@ class _Bonus extends State {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Paid against order 100328',
+                        'Paid against orders',
                         textAlign: TextAlign.start,
                         style: textStyle(
                             14, 'Poppins', kcSecondaryColor, FontWeight.w600),
                       ),
                       Text(
-                        '₹ 50',
+                        '₹ 0',
                         textAlign: TextAlign.start,
                         style: textStyle(
                             14, 'Poppins', kcSecondaryColor, FontWeight.w600),
                       ),
                     ],
                   ),
-                  Text(
-                    '17 Sept, 2020  |  7:00 AM ',
-                    textAlign: TextAlign.start,
-                    style: textStyle(
-                        10, 'Poppins', Color(0xffbcbbbb), FontWeight.w600),
-                  ),
+                  // Text(
+                  //   '17 Sept, 2020  |  7:00 AM ',
+                  //   textAlign: TextAlign.start,
+                  //   style: textStyle(
+                  //       10, 'Poppins', Color(0xffbcbbbb), FontWeight.w600),
+                  // ),
                   Divider(),
                   SizedBox(height: 20),
                   Row(
@@ -288,19 +288,19 @@ class _Bonus extends State {
                             14, 'Poppins', kcSecondaryColor, FontWeight.w600),
                       ),
                       Text(
-                        '₹ 50',
+                        '₹ 0',
                         textAlign: TextAlign.start,
                         style: textStyle(
                             14, 'Poppins', kcSecondaryColor, FontWeight.w600),
                       ),
                     ],
                   ),
-                  Text(
-                    '17 Sept, 2020  |  7:00 AM ',
-                    textAlign: TextAlign.start,
-                    style: textStyle(
-                        10, 'Poppins', Color(0xffbcbbbb), FontWeight.w600),
-                  ),
+                  // Text(
+                  //   '17 Sept, 2020  |  7:00 AM ',
+                  //   textAlign: TextAlign.start,
+                  //   style: textStyle(
+                  //       10, 'Poppins', Color(0xffbcbbbb), FontWeight.w600),
+                  // ),
                   Divider()
                 ]),
           )

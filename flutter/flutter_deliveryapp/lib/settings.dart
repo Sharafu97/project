@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_deliveryapp/apiServ/apiService.dart';
 import 'package:flutter_deliveryapp/model/usermodel.dart';
-
+import 'package:intl/intl.dart';
 import 'customitems.dart';
 
 class Settings extends StatefulWidget {
@@ -45,8 +45,9 @@ class _Settings extends State {
               child: Row(
                 children: [
                   CircleAvatar(
-                    backgroundColor: Colors.red,
+                    // backgroundColor: Colors.red,
                     radius: 40,
+                    child: Image.asset('assets/imgPerson.png'),
                   ),
                   SizedBox(
                     width: 10,
@@ -339,7 +340,7 @@ class _Notification extends State {
                         Navigator.pop(context);
                       }),
                   Text(
-                    'Change password',
+                    'Notification',
                     style: textStyle(
                         18, 'Poppins', kcSecondaryColor, FontWeight.w700),
                   )
@@ -349,7 +350,7 @@ class _Notification extends State {
             SizedBox(height: 50),
             Flexible(
                 child: ListView.builder(
-              itemCount: 10,
+              itemCount: 1,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
@@ -361,12 +362,11 @@ class _Notification extends State {
                       size: 18,
                     ),
                     title: Text(
-                      'Notification',
+                      'Test',
                       style: textStyle(
                           14, 'Poppins', Colors.greenAccent, FontWeight.w600),
                     ),
-                    subtitle: Text(
-                        'Your order has been placed successfully.Thank You!',
+                    subtitle: Text('Test message',
                         style: TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.w500,
@@ -376,7 +376,7 @@ class _Notification extends State {
                           // wordSpacing: 1,
                         )),
                     trailing: Text(
-                      'Days ago',
+                      '2020-10-04|12:55:44',
                       style: textStyle(
                           9, 'Poppins', Color(0xffB4B4B4), FontWeight.w400),
                     ),
@@ -407,36 +407,39 @@ class _LeaveRequestState extends State<LeaveRequest> {
   final noDays = TextEditingController();
   final reson = TextEditingController();
 
-  Future<void> userLeave() {
-    // DateTime sDate, DateTime eDate, String ltype,
-    //   String ldays, String lreason) async {
+  Future<void> userLeave(String sDate, String eDate, String ltype, String ldays,
+      String lreason) async {
     loading = true;
     setState(() {});
-    print(startdate);
-    print(enddate);
-    print(leaveType.toString());
-    print(noDays.toString());
-    print(reson.toString());
+    print('function');
+    print(sDate);
+    print(eDate);
+    print(ltype.toString());
+    print(ldays.toString());
+    print(lreason.toString());
 
-    // try {
-    //   // final user = await ApiServices().login();
-    //   print('trueeeee');
+    try {
+      final userLeave = await ApiServices().leave(
+          startDate: sDate,
+          endDate: eDate,
+          leaveReason: lreason,
+          leaveType: ltype,
+          noDays: ldays);
+      print('trueeeee');
+      String msg = userLeave;
+      print(msg);
+      hasErrorOccoured = false;
 
-    //   hasErrorOccoured = false;
-    //   // UserData().user = user;
-    //   // Navigator.push(
-    //   //     context, MaterialPageRoute(builder: (context) => NavBarContainer()));
-    //   // final userpro = await ApiServices().profile();
-    //   // UserProfile().pro = userpro;
-    // } catch (e) {
-    //   // hasErrorOccoured = true;
-    //   // print('falseeeee');
-    //   // print(UserProfile().pro.name);
-    //   // // print(UserModel().tocken);
-    //   // errorMessage = e.toString();
-    //   // ScaffoldMessenger.of(context)
-    //   //     .showSnackBar(SnackBar(content: Text(errorMessage)));
-    // }
+      // Navigator.push(
+      //     context, MaterialPageRoute(builder: (context) => Settings()));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));
+    } catch (e) {
+      hasErrorOccoured = true;
+      print('falseeeee');
+      errorMessage = e.toString();
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(errorMessage)));
+    }
     // loading = false;
     // setState(() {});
   }
@@ -524,7 +527,7 @@ class _LeaveRequestState extends State<LeaveRequest> {
                               color: Color(0xfff5f5f5),
                               borderRadius: BorderRadius.circular(10)),
                           child: Text(
-                            startdate.toString(),
+                            '${startdate.day}/${startdate.month}/${startdate.year}',
                             style: textStyle(12, 'Poppins', kcSecondaryColor,
                                 FontWeight.w700),
                           ),
@@ -559,7 +562,7 @@ class _LeaveRequestState extends State<LeaveRequest> {
                               color: Color(0xfff5f5f5),
                               borderRadius: BorderRadius.circular(10)),
                           child: Text(
-                            enddate.toString(),
+                            '${enddate.day}/${enddate.month}/${enddate.year}',
                             style: textStyle(12, 'Poppins', kcSecondaryColor,
                                 FontWeight.w700),
                           ),
@@ -629,22 +632,27 @@ class _LeaveRequestState extends State<LeaveRequest> {
                     height: 30,
                   ),
                   CustomButton(
-                      height: 40,
-                      width: 100,
-                      title: 'Submit',
-                      color: kcPrimaryColor,
-                      ontap: () {
-                        print(startdate.day);
-                        print(enddate);
-                        print(leaveType.text);
-                        print(noDays.text);
-                        print(reson.text);
-                      }
-                      // userLeave();
-                      // startdate, startdate, leaveType.text,
-                      //   noDays.text, reson.text
-                      // },
-                      ),
+                    height: 40,
+                    width: 100,
+                    title: 'Submit',
+                    color: kcPrimaryColor,
+                    ontap: () {
+                      print(startdate.day);
+                      print(enddate.day);
+                      print(leaveType.text);
+                      print(noDays.text);
+                      print(reson.text);
+                      String fromDate =
+                          DateFormat('yyyy-MM-dd').format(startdate);
+                      print(fromDate);
+                      String toDate = DateFormat('yyyy-MM-dd').format(enddate);
+                      print(fromDate);
+                      print(toDate);
+
+                      userLeave(fromDate, toDate, leaveType.text, noDays.text,
+                          reson.text);
+                    },
+                  ),
                 ],
               ),
             )

@@ -41,7 +41,7 @@ class MyWallet extends State {
               child: Column(
                 children: [
                   Text(
-                    '₹ 250/Cash',
+                    '₹ 0',
                     style: textStyle(
                         24,
                         'Poppins',
@@ -85,7 +85,7 @@ class MyWallet extends State {
             ),
             Flexible(
               child: ListView.builder(
-                itemCount: 10,
+                itemCount: 0,
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.only(left: 30.0, right: 30),
@@ -201,7 +201,7 @@ class Payment extends State {
                       13, 'Poppins', kcGreyLightColor, FontWeight.w600),
                 ),
                 Text(
-                  '₹ 250',
+                  '₹ 0',
                   style: textStyle(24, 'Poppins', kcRedColor, FontWeight.w600),
                 )
               ],
@@ -221,7 +221,7 @@ class Payment extends State {
                           13, 'Poppins', kcGreyLightColor, FontWeight.w600),
                     ),
                     Text(
-                      'Shope name',
+                      'Daily groce',
                       style: textStyle(
                           13, 'Poppins', kcSecondaryColor, FontWeight.w600),
                     )
