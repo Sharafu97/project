@@ -38,6 +38,7 @@ class CustomTextField extends StatelessWidget {
         border: Border.all(color: Color(0xffCACFE2), width: 0),
       ),
       child: TextField(
+        
         controller: textController,
         decoration: InputDecoration(
           hintText: hint,

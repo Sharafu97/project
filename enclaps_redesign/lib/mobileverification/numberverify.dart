@@ -29,16 +29,8 @@ class _VerificationState extends State<Verification> {
                 height: 25,
               ),
               Text(
-                'We will send you a',
-                style: ktBody2,
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Text(
-                'One Time Password on this number',
-                style: ktBody2,
+                'We will send you a \n One Time Password on this number',
+                style: ktBody2.copyWith(height: 1.5),
                 textAlign: TextAlign.center,
               ),
               SizedBox(

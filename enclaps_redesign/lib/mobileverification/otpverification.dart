@@ -1,7 +1,6 @@
 import 'package:enclaps_redesign/config/color.dart';
 import 'package:enclaps_redesign/config/style.dart';
 import 'package:enclaps_redesign/mobileverification/verifiedotp.dart';
-import 'package:enclaps_redesign/mobileverification/widget/otptextfield.dart';
 import 'package:enclaps_redesign/mobileverification/widget/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pin_put/pin_put.dart';
@@ -75,16 +74,8 @@ class _OtpVerificationState extends State<OtpVerification> {
                 height: 25,
               ),
               Text(
-                'Enter the verification  we just sent',
-                style: ktBody2,
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Text(
-                'you on your mobile number',
-                style: ktBody2,
+                'Enter the verification  we just sent\nyou on your mobile number',
+                style: ktBody2.copyWith(height: 1.5),
                 textAlign: TextAlign.center,
               ),
               SizedBox(

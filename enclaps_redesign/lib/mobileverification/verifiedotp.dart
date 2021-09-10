@@ -39,28 +39,17 @@ class _VerifiedOtpState extends State<VerifiedOtp> {
             SizedBox(
               height: 20,
             ),
-            Container(
-              width: 250,
-              child: Text(
-                'Mobile number  verified successfully',
-                style: ktHeadline1,
-                textAlign: TextAlign.center,
-              ),
+            Text(
+              'Mobile number\nverified successfully',
+              style: ktHeadline1,
+              textAlign: TextAlign.center,
             ),
             SizedBox(
               height: 20,
             ),
             Text(
-              'One of the ongoing experiments to',
-              style: ktBody2,
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Text(
-              'improve new user conversion',
-              style: ktBody2,
+              'One of the ongoing experiments to\nimprove new user conversion',
+              style: ktBody2.copyWith(height: 1.5),
               textAlign: TextAlign.center,
             ),
           ],

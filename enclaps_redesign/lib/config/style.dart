@@ -50,3 +50,23 @@ const ktOtp = TextStyle(
   letterSpacing: 0,
   wordSpacing: 1,
 );
+
+const ktBody4 = TextStyle(
+  fontSize: 28,
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.w700,
+  fontFamily: 'Roboto',
+  color: kcWhite,
+  letterSpacing: 0,
+  wordSpacing: 1,
+);
+
+const ktBody5 = TextStyle(
+  fontSize: 18,
+  fontStyle: FontStyle.normal,
+  fontWeight: FontWeight.w900,
+  fontFamily: 'Roboto',
+  color: kcWhite,
+  letterSpacing: 0,
+  wordSpacing: 1,
+);
